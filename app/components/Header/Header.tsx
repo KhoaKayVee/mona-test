@@ -24,18 +24,18 @@ const Header = () => {
         />
       </div>
       <ul className="flex items-center gap-5 font-normal text-base">
-        <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500 hover:ml-3">
+        <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500">
           Promotion
         </li>
         <Link href="/flightschedule">
-          <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500 hover:ml-3 bg-indigo-500 py-2 px-4 rounded-3xl">
+          <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500 bg-indigo-500 py-2 px-4 rounded-3xl">
             Flight Schedule
           </li>
         </Link>
-        <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500 hover:ml-3">
+        <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500">
           About us
         </li>
-        <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500 hover:ml-3">
+        <li className="hover:cursor-pointer hover:text-indigo-800 hover:duration-500">
           Payment Guide
         </li>
       </ul>

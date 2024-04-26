@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Schedule from "../components/Schedule/Schedule";
 import ScheduleContainer from "../components/ScheduleContainer/ScheduleContainer";
@@ -8,6 +9,7 @@ export default function FlightSchedule() {
       <Header />
       <Schedule />
       <ScheduleContainer />
+      <Footer />
     </div>
   );
 }

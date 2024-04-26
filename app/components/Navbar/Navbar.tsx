@@ -23,18 +23,18 @@ const Navbar = () => {
       </div>
 
       <ul className="flex items-center gap-5 font-medium text-base relative overflow-hidden cursor-pointer">
-        <li className="hover:text-indigo-500 hover:transition-all hover:duration-500 hover:pl-2">
+        <li className="hover:text-indigo-500 hover:transition-all hover:duration-500">
           Promotion
         </li>
         <Link href="/flightschedule">
-          <li className="hover:text-indigo-500 hover:transition-all hover:duration-500 hover:pl-2">
+          <li className="hover:text-indigo-500 hover:transition-all hover:duration-500">
             Flight Schedule
           </li>
         </Link>
-        <li className="hover:text-indigo-500 hover:transition-all hover:duration-500 hover:pl-2">
+        <li className="hover:text-indigo-500 hover:transition-all hover:duration-500">
           About us
         </li>
-        <li className="hover:text-indigo-500 hover:transition-all hover:duration-500 hover:pl-2">
+        <li className="hover:text-indigo-500 hover:transition-all hover:duration-500">
           Payment Guide
         </li>
       </ul>
