@@ -4,7 +4,7 @@ import ScheduleContainer from "../components/ScheduleContainer/ScheduleContainer
 
 export default function FlightSchedule() {
   return (
-    <div className="bg-slate-300 min-h-screen w-full px-28">
+    <div className="bg-slate-300 ">
       <Header />
       <Schedule />
       <ScheduleContainer />

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <nav className="bg-indigo-600 flex w-full h-20 items-center justify-around overflow-visible text-white ">
+    <div className="bg-indigo-600 flex w-full h-20 items-center justify-around overflow-visible text-white ">
       <div className="flex justify-center items-center gap-2">
         <div className=" text-xl text-white font-extrabold">
           <a href="/">baycungban</a>
@@ -48,7 +48,7 @@ const Header = () => {
           Booking now
         </Button>
       </div>
-    </nav>
+    </div>
   );
 };
 
