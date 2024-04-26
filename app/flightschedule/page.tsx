@@ -1,5 +1,6 @@
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import Navbar from "../components/Navbar/Navbar";
 import Schedule from "../components/Schedule/Schedule";
 import ScheduleContainer from "../components/ScheduleContainer/ScheduleContainer";
 

@@ -42,14 +42,16 @@ const Schedule = () => {
           </div>
           <div className="font-semibold text-sm">Business Class</div>
         </div>
-        <div className=" flex items-center text-center justify-center">
-          <Button
-            className="flex justify-between bg-orange-500 rounded-xl py-3 px-5 font-normal text-sm capitalize  hover:bg-orange-200 hover:duration-700 hover:text-orange-600"
-            variant="contained"
-          >
-            Change Flights
-            <CiSearch fill="white" />
-          </Button>
+        <div className=" flex gap-2 items-center text-center justify-center">
+          <div>
+            <Button
+              className="flex justify-between bg-orange-500 rounded-xl py-3 px-5 font-normal text-sm capitalize  hover:bg-orange-200 hover:duration-700 hover:text-orange-600"
+              variant="contained"
+            >
+              Change Flights
+              <CiSearch fill="white" />
+            </Button>
+          </div>
         </div>
       </div>
     </div>

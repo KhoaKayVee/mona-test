@@ -1,13 +1,20 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import image from "../../../public/imageVN.png";
 import image1 from "../../../public/imageUS.png";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const pathName = usePathname();
   return (
-    <nav className="flex w-full h-20 items-center justify-around px-4 py-8 absolute z-10">
+    <nav
+      className={`flex w-full h-20 items-center justify-around px-4 py-8 absolute z-10 ${
+        pathName == "/flightschedule" ? "asdf" : ""
+      }`}
+    >
       <div className="flex gap-3">
         <h1 className=" text-xl text-black font-extrabold">Baycungban</h1>
         <Image

@@ -21,9 +21,37 @@ import { Collapse } from "antd";
 import ImageThayDoi from "../../../public/imageThayDoi.png";
 import moment from "moment";
 
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+
+import imageMoiNhat from "../../../public/imageMoiNhat.png";
+
 const ScheduleContainer = () => {
+  const [showFlightDetail, setShowFlightDetail] = useState(false);
+  const [showFareInfo, setShowFareInfo] = useState(false);
+
+  const handleFlightDetail = () => {
+    setShowFlightDetail(true);
+    setShowFareInfo(false);
+    setShowFlightDetail(!showFlightDetail);
+  };
+
+  const handleFareInfoClick = () => {
+    setShowFlightDetail(false);
+    setShowFareInfo(true);
+    setShowFareInfo(!showFareInfo);
+  };
+
   // handleClick
   const [isFlightDetailClicked, setIsFlightDetailClicked] = useState(false);
+
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
 
   const handleFlightDetailClick = () => {
     setIsFlightDetailClicked(!isFlightDetailClicked);
@@ -56,6 +84,8 @@ const ScheduleContainer = () => {
 
   const handleDiv1Click = () => {
     setShowDiv2(!showDiv2);
+    setShowFareInfo(!showFareInfo);
+    setShowFlightDetail(!showFlightDetail);
   };
 
   const { Panel } = Collapse;
@@ -110,9 +140,22 @@ const ScheduleContainer = () => {
                 <MdArrowDropDown fill="blue" />
               </button>
               <button className="bg-white px-4 py-4 w-28 h-8 rounded-xl flex items-center text-center justify-between">
-                Low
+                Price
                 <MdArrowDropDown fill="blue" />
               </button>
+
+              {/* <button className="bg-white px-4 py-4 w-28 h-8 rounded-xl flex items-center text-center justify-between">
+                Time
+                <MdArrowDropDown fill="blue" />
+              </button>
+              <button className="bg-white px-4 py-4 w-28 h-8 rounded-xl flex items-center text-center justify-between">
+                Airline
+                <MdArrowDropDown fill="blue" />
+              </button>
+              <button className="bg-white px-4 py-4 w-28 h-8 rounded-xl flex items-center text-center justify-between">
+                Low
+                <MdArrowDropDown fill="blue" />
+              </button> */}
             </div>
 
             {/* CONTAINER */}
@@ -130,14 +173,15 @@ const ScheduleContainer = () => {
               );
 
               const money = item.FeeAdult + item.PriceAdult + item.TaxAdult;
-              const formatMoney = money.toLocaleString();
+              const formatMoney = money.toLocaleString("vi-VN");
+              console.log(formatMoney);
 
               return (
                 <div key={index}>
                   <div className="mr-2 mt-3 rounded-xl ">
-                    <div className="bg-white flex w-[890px] h-fit  rounded-xl px-3 py-3 ">
+                    <div className="header-wrapper bg-white flex w-[890px] h-fit  rounded-xl px-3 py-3">
                       <div className="">
-                        <div className="flex gap-12">
+                        <div className="flex gap-16">
                           <div className="flex gap-2 text-center justify-center items-center">
                             <div>
                               <Image
@@ -165,6 +209,7 @@ const ScheduleContainer = () => {
                                     className="object-cover"
                                     src={ImageThayDoi}
                                     alt="thaydoi"
+                                    width={100}
                                   />
                                 </div>
                               </div>
@@ -218,7 +263,7 @@ const ScheduleContainer = () => {
 
                         {/* Phan duoi container */}
                         <div className="mt-6 ">
-                          <Collapse
+                          {/* <Collapse
                             className="flex bg-white border-none outline-none  "
                             accordion
                           >
@@ -374,20 +419,6 @@ const ScheduleContainer = () => {
                                     </div>
                                   </div>
                                   <div className="">
-                                    {/* <div>
-                                      <p>{item.StartPoint}</p>
-                                      <p className="text-indigo-600">
-                                        {item.GroupClass}
-                                      </p>
-                                    </div>
-                                    <div>
-                                      <Image
-                                        src={ImageNgan}
-                                        alt="ngan"
-                                        width={65}
-                                      />
-                                    </div>
-                                    <div>{item.EndPoint}</div> */}
                                     <div className="flex">
                                       <div className="flex gap-2 justify-center items-center text-center">
                                         <p>{item.StartPoint}</p>
@@ -452,7 +483,232 @@ const ScheduleContainer = () => {
                                 </div>
                               </div>
                             </Panel>
-                          </Collapse>
+                          </Collapse> */}
+                          <div className="flex-col">
+                            <div className="flex gap-12 items-center">
+                              <div
+                                onClick={handleFlightDetail}
+                                className="text-indigo-600 font-medium cursor-pointer flex flex-col "
+                              >
+                                FLIGHT DETAIL
+                              </div>
+
+                              <div
+                                onClick={handleFareInfoClick}
+                                className="text-gray-500 font-medium cursor-pointer "
+                              >
+                                FARE INFO
+                              </div>
+                              <div className="w-[560px] ">
+                                <Image src={imageMoiNhat} alt="moinhat" />
+                              </div>
+                            </div>
+                            {showFlightDetail && (
+                              <div className="">
+                                <div className="container ">
+                                  <div className="flex flex-col gap-5 mt-5">
+                                    <div className="flex w-full gap-6 ">
+                                      <div className="w-[45%] flex gap-8">
+                                        <div className="flex flex-col gap-6 items-center justify-center text-center  ">
+                                          <div>
+                                            <div className="font-semibold">
+                                              {formatStartDate}
+                                            </div>
+                                            <div>{formatDayMonthStartDate}</div>
+                                          </div>
+                                          <div>{item.Duration} Phút</div>
+                                          <div>
+                                            <div className="font-semibold">
+                                              {formatEndDate}
+                                            </div>
+                                            <div>{formatDayMonthEndDate}</div>
+                                          </div>
+                                        </div>
+                                        <div className="">
+                                          <Image
+                                            src={ImageThang}
+                                            alt="hinthang"
+                                            className="w-[7px] h-[165px] flex items-center justify-center text-center"
+                                          />
+                                        </div>
+                                        <div className="flex flex-col justify-between ">
+                                          <div className="">
+                                            <div className="font-bold">
+                                              {item.StartPoint}
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <div className="font-bold">
+                                              {item.EndPoint}
+                                            </div>
+                                            <div className="text-sm"></div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="w-[55%] flex flex-col gap-3">
+                                        <div className="flex gap-3 items-center  text-center">
+                                          <div className="">
+                                            <Image
+                                              src={image}
+                                              alt="imagebamboo"
+                                              width={30}
+                                              height={30}
+                                            />
+                                          </div>
+                                          <div className="flex flex-col">
+                                            <div className="font-semibold  items-center text-center justify-center">
+                                              BAMBOO AIRWAYS
+                                            </div>
+                                            <div className="flex">
+                                              <div>{item.FlightNumber}</div>
+                                              <div>. {item.FareClass}</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div className="flex justify-between w-full rounded-xl bg-[#F4F2F9] px-5 py-5">
+                                          <div className="flex flex-col gap-1">
+                                            <div className="flex gap-1">
+                                              <p>Baggage</p>
+                                              <p className="text-indigo-600 font-bold">
+                                                {item.Carryon
+                                                  ? `${item.Carryon}`
+                                                  : "0kg"}
+                                              </p>
+                                            </div>
+                                            <div className="flex gap-1">
+                                              <p>In-flight</p>
+                                              <p className="text-indigo-600 font-bold">
+                                                Meal
+                                              </p>
+                                            </div>
+                                            <div className="flex gap-1">
+                                              <p>In-flight</p>
+                                              <p className="text-indigo-600 font-bold">
+                                                Entertainment
+                                              </p>
+                                            </div>
+                                          </div>
+
+                                          <div>
+                                            <div className="flex flex-col gap-1">
+                                              <div className="flex gap-1">
+                                                <p>Aircraft</p>
+                                                <p className="text-indigo-600 font-bold">
+                                                  {item.FlightNumber}
+                                                </p>
+                                              </div>
+                                              <div className="flex gap-1">
+                                                <p>Seat layout</p>
+                                                <p className="text-indigo-600 font-bold">
+                                                  3-3
+                                                </p>
+                                              </div>
+                                              <div className="flex gap-1">
+                                                <p>Seat pitch</p>
+                                                <p className="text-indigo-600 font-bold">
+                                                  29 inches (standard)
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                            {showFareInfo && (
+                              <div>
+                                <div className="flex w-[740px] gap-6 mt-5">
+                                  <div className="w-[45%] flex flex-col gap-3  pl-4">
+                                    <div className="font-bold">CONDITIONS</div>
+                                    <div className="flex gap-3 items-center">
+                                      <div>
+                                        <Image
+                                          src={image}
+                                          alt="bamboo"
+                                          width={30}
+                                          height={30}
+                                        />
+                                      </div>
+                                      <div className="flex flex-col">
+                                        <div className="font-semibold">
+                                          {item.AirlineCode}
+                                        </div>
+                                        <div>
+                                          {item.FlightNumber} .{" "}
+                                          {item.GroupClass}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="">
+                                      <div className="flex">
+                                        <div className="flex gap-2 justify-center items-center text-center">
+                                          <p>{item.StartPoint}</p>
+                                          <Image
+                                            className="object-contain"
+                                            src={ImageNgan}
+                                            alt="ngan"
+                                            width={55}
+                                          />
+                                          <p>{item.EndPoint}</p>
+                                        </div>
+                                      </div>
+                                      <p className="text-indigo-600">
+                                        {item.GroupClass}
+                                      </p>
+                                    </div>
+                                    <div>
+                                      <div>Non - Refundable</div>
+                                    </div>
+                                  </div>
+                                  <div className="w-[55%] flex flex-col gap-1">
+                                    <div className="font-semibold">
+                                      PRICE DETAILS
+                                    </div>
+                                    <div>
+                                      <div className="flex gap-32 border-b border-solid border-gray-700">
+                                        <div className="flex flex-col gap-1">
+                                          <div>Adult Basic Fare(x1)</div>
+                                          <div>Tax</div>
+                                          <div>Regular Total Price</div>
+                                          <div className="text-[#F06336]">
+                                            Save
+                                          </div>
+                                        </div>
+                                        <div className="flex flex-col gap-1 mb-3 ">
+                                          <div className="font-bold">
+                                            {item.FeeAdult +
+                                              item.PriceAdult +
+                                              item.TaxAdult}{" "}
+                                            vnd
+                                          </div>
+                                          <div>included</div>
+                                          <div>
+                                            {item.FeeAdult +
+                                              item.PriceAdult +
+                                              item.TaxAdult}{" "}
+                                            vnd
+                                          </div>
+                                          <div>0 vnd</div>
+                                        </div>
+                                      </div>
+                                      <div className="mt-2 flex items-center text-center gap-[210px] ">
+                                        <div>You pay</div>
+                                        <div className="text-[#F06336] font-bold">
+                                          {item.FeeAdult +
+                                            item.PriceAdult +
+                                            item.TaxAdult}{" "}
+                                          vnd
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -464,7 +720,7 @@ const ScheduleContainer = () => {
         </div>
 
         {showDiv2 && (
-          <div className="flex-shrink">
+          <div className=" ">
             <div className="bg-white rounded-xl  w-[200px]">
               <div className="border-b border-solid border-gray-700 font-semibold px-3 py-2">
                 YOUR FLIGHTS

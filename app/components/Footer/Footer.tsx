@@ -9,7 +9,7 @@ import ImageFooter from "../../../public/imageFooter.png";
 const Footer = () => {
   return (
     <footer className="bg-[#F4F2F9] py-12 mt-24">
-      <div className="flex justify-around px-">
+      <div className="container flex justify-around px- mx-auto">
         <div className="flex gap-3 items-center justify-center">
           <div className="flex justify-center items-center gap-2">
             <Image

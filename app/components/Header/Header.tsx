@@ -10,7 +10,7 @@ const Header = () => {
     <div className="bg-indigo-600 flex w-full h-20 items-center justify-around overflow-visible text-white ">
       <div className="flex justify-center items-center gap-2">
         <div className=" text-xl text-white font-extrabold">
-          <a href="/">baycungban</a>
+          <Link href="/">baycungban</Link>
         </div>
         <Image
           className="object-contain cursor-pointer"
